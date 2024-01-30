@@ -1,20 +1,21 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 const navItems = {
-  '/': {
-    name: 'home',
+  "/": {
+    name: "home",
   },
-  '/work': {
-    name: 'work',
+  "/work": {
+    name: "work",
   },
-  '/blog': {
-    name: 'blog',
+  "/services": {
+    name: "services",
   },
-  '/guestbook': {
-    name: 'guestbook',
-  },
+  // "/blog": {
+  //   name: "blog",
+  // },
 };
 
+const BLOG_PATH_URL = "http://writing.artivilla.com";
 export function Navbar() {
   return (
     <aside className="-ml-[8px] mb-16 tracking-tight">
@@ -28,7 +29,8 @@ export function Navbar() {
               return (
                 <Link
                   key={path}
-                  href={path}
+                  href={name === "blog" ? BLOG_PATH_URL : path}
+                  target={name === "blog" ? "_blank" : "_self"}
                   className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2"
                 >
                   {name}
